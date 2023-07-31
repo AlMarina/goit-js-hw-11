@@ -43,16 +43,18 @@ async function handlerSubmitForm(evt) {
     return;
   }
 
+  
+
+  try {
   const { hits, totalHits } = await searchImages(searchQuery, currentPage);
   currentHits = hits.length;
 
-     if (totalHits > 40) {
+      if (totalHits > 40) {
     enable(refs.loadMoreBtn)
   } else {
      disable(refs.loadMoreBtn);
   }
 
-  try {
        if (totalHits > 0) {
           Notify.success(`Hooray! We found ${totalHits} images.`);
       refs.galleryEl.innerHTML = '';
@@ -112,9 +114,9 @@ currentHits += hits.length;
         <b>Comments</b>
         ${item.comments}
       </p>
-      <p class='info-item'>
-        <b>Downloads</b>
-        ${item.downloads}
+      <p class='info-item'> 
+      <b>Downloads</b>
+      ${item.downloads}
       </p>
     </div>
   </div>
